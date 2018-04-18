@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "webpack": "webpack"
+    "webpack": "webpack",
+    "webpack-watch": "webpack --watch"
   },
   "keywords": [],
   "author": "",
@@ -19,6 +20,7 @@
     "file-loader": "^1.1.11",
     "history": "^4.7.2",
     "html-webpack-plugin": "^3.2.0",
+    "node-sass": "^4.8.3",
     "proptypes": "^1.1.0",
     "react": "^16.3.2",
     "react-dom": "^16.3.2",
@@ -29,8 +31,9 @@
     "redux-logger": "^3.0.6",
     "redux-thunk": "^2.2.0",
     "sass-loader": "^7.0.1",
+    "style-loader": "^0.20.3",
     "url-loader": "^1.0.1",
-    "webpack": "^4.5.0",
+    "webpack": "^4.6.0",
     "webpack-cli": "^2.0.14",
     "webpack-dev-server": "^3.1.3"
   }
