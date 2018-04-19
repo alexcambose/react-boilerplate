@@ -1,9 +1,15 @@
 import React, { Component } from 'react';
+import { Toggle } from 'material-ui';
+const a = {fontFamily: 'Roboto', fontWeight: '200'};
 class App extends Component {
     render() {
         return (
             <div>
-                <h1>Salut pastrama de la garajul dintre oameni!</h1>
+               <Toggle
+            name="disableYearSelection"
+            value="disableYearSelection"
+            label="Difdfdsable Year Selection"
+          />
             </div>
         );
     }

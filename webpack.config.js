@@ -1,16 +1,20 @@
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const port = process.env.PORT || 8080;
+const inDev = process.env.NODE_ENV !== 'production';
+console.log(inDev);
 module.exports = {
     entry: {
         index: './src/index.js',
-        vendor: ["react", "react-dom", "react-router", "react-router-dom", "redux", "react-redux"],
+        vendor: ["react", "react-dom", "react-router", "react-router-dom", "redux", "react-redux", "material-ui"],
     },
     output: {
         path: path.resolve(__dirname, './dist/'),
-        filename: '[name].bundle.js'
+        filename: inDev ? '[name].bundle.js' : '[hash].bundle.js',
     },
     mode: 'development',
+    devtool: (inDev ? 'cheap-source-map' : ''),
     module: {
         rules: [
             {
@@ -36,14 +40,23 @@ module.exports = {
                 }, {
                     loader: "sass-loader"
                 }]
-            }
+            },
+            {
+                test: /\.(ttf|eot|woff|woff2)$/,
+                loader: "file-loader",
+                options: {
+                    name: "fonts/[hash].[ext]",
+                },
+            },
         ],
     },
     plugins: [
-        new HtmlWebpackPlugin(),
+        new HtmlWebpackPlugin({
+            title: 'Webpack Bolierplate'
+        }),
     ],
     optimization: {
-        minimize: false,
+        minimize: true,
         runtimeChunk: {
             name: 'vendor'
         },
@@ -58,5 +71,13 @@ module.exports = {
                 }
             }
         }
+    },
+    devServer: {
+        contentBase: path.join(__dirname, "dist"),
+        compress: true,
+        port: 9000
+    },
+    performance: {
+        hints: "error"
     }
 };

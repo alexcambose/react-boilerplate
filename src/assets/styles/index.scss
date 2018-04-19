@@ -1,4 +1,6 @@
-$co: blue;
-body {
-    background: url('../images/broscuta.jpg');
+@import "font-imports.scss";
+* { box-sizing: border-box; }
+html, body {
+    padding: 0;
+    margin: 0;
 }
