@@ -1,15 +1,12 @@
 import React, { Component } from 'react';
-import { Toggle } from 'material-ui';
-const a = {fontFamily: 'Roboto', fontWeight: '200'};
+import Counter from './components/Counter';
+
 class App extends Component {
     render() {
         return (
             <div>
-               <Toggle
-            name="disableYearSelection"
-            value="disableYearSelection"
-            label="Difdfdsable Year Selection"
-          />
+                <h3>It works!</h3>
+                <Counter />
             </div>
         );
     }

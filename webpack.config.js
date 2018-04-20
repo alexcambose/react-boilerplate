@@ -1,19 +1,18 @@
 const path = require('path');
-const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+
 const port = process.env.PORT || 8080;
 const inDev = process.env.NODE_ENV !== 'production';
-console.log(inDev);
 module.exports = {
     entry: {
         index: './src/index.js',
-        vendor: ["react", "react-dom", "react-router", "react-router-dom", "redux", "react-redux", "material-ui"],
+        vendor: ['react', 'react-dom', 'react-router', 'react-router-dom', 'redux', 'react-redux'],
     },
     output: {
         path: path.resolve(__dirname, './dist/'),
-        filename: inDev ? '[name].bundle.js' : '[hash].bundle.js',
+        filename: `[${inDev ? 'name' : 'hash'}].bundle.js`,
     },
-    mode: 'development',
+    mode: (inDev ? 'development' : 'production'),
     devtool: (inDev ? 'cheap-source-map' : ''),
     module: {
         rules: [
@@ -21,63 +20,63 @@ module.exports = {
                 test: /\.js$/,
                 use: {
                     loader: 'babel-loader',
-                }
+                },
             },
             {
                 test: /\.(png|jpg|gif)$/,
                 use: [
                     {
-                        loader: 'file-loader'
-                    }
-                ]
+                        loader: 'file-loader',
+                    },
+                ],
             },
             {
                 test: /\.scss$/,
                 use: [{
-                    loader: "style-loader"
+                    loader: 'style-loader',
                 }, {
-                    loader: "css-loader"
+                    loader: 'css-loader',
                 }, {
-                    loader: "sass-loader"
-                }]
+                    loader: 'sass-loader',
+                }],
             },
             {
                 test: /\.(ttf|eot|woff|woff2)$/,
-                loader: "file-loader",
+                loader: 'file-loader',
                 options: {
-                    name: "fonts/[hash].[ext]",
+                    name: `fonts/[${inDev ? 'name' : 'hash'}].[ext]`,
                 },
             },
         ],
     },
     plugins: [
         new HtmlWebpackPlugin({
-            title: 'Webpack Bolierplate'
+            title: 'Webpack Bolierplate',
         }),
     ],
     optimization: {
         minimize: true,
         runtimeChunk: {
-            name: 'vendor'
+            name: 'vendor',
         },
         splitChunks: {
             cacheGroups: {
                 default: false,
                 commons: {
                     test: /node_modules/,
-                    name: "vendor",
-                    chunks: "initial",
-                    minSize: 1
-                }
-            }
-        }
+                    name: 'vendor',
+                    chunks: 'initial',
+                    minSize: 1,
+                },
+            },
+        },
     },
     devServer: {
-        contentBase: path.join(__dirname, "dist"),
+        contentBase: path.join(__dirname, 'dist'),
         compress: true,
-        port: 9000
+        port,
     },
     performance: {
-        hints: "error"
-    }
+        hints: 'warning',
+    },
 };
