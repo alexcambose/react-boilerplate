@@ -1,7 +1,6 @@
 # react-boilerplate
 Boilerpate
 
-
 | Features       
 | -------------
 | [**ES2017 Javascript**](https://babeljs.io/docs/plugins/preset-es2017/)
@@ -12,9 +11,6 @@ Boilerpate
 | [**Eslint**](https://eslint.org/)
 | [**Webpack**](https://webpack.js.org/)
 | [**Sass**](https://sass-lang.com/)
-
-
-****
 
 
 ## Installation
@@ -40,10 +36,10 @@ cd react-boilerplate && npm install
 #### Defining routes
 This boilerplate offers a clear and simple way of writing code and because of this I decided that the current way of defining routes using *react router* it's a bit ambiguous and not scalable (including a `<Route />` component in each component). All the routes are specified in `routes/index.js` and are rendered using a **recursive** function (so that it can also handle infinite nesting) just like other frameworks like [Angular](https://angular.io/guide/router#configuration), [Vue](https://router.vuejs.org/en/essentials/nested-routes.html).
 
-```js
+```jst
 //...component imports...
 
-// example component, nested toutes are rendered inside the parent component with children
+// example component, nested routes are rendered inside the parent component with children
 const SomeComponent = ({ children }) => (
     <div>
         Hello
