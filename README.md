@@ -1,14 +1,20 @@
 # react-boilerplate
 Boilerpate
 
-## File structure
+## Features
+**ES6 Javascript**
+****
 
 
 ## Installation
 [Clone](https://git-scm.com/docs/git-clone) or download this repository.
 ```bash
-cd reatc-bolierplate && npm install
+cd react-boilerplate && npm install
 ```
 
 ## Usage
-Coming soon...
+`npm run webpack` - Build in *development* mode
+
+`npm run webpack-watch` - Watch and build in *development* mode
+
+`npm run serve` - Starts *webpack-dev-server*
