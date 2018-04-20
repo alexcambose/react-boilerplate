@@ -1,5 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
+const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
 
 const port = process.env.PORT || 8080;
 const inDev = process.env.NODE_ENV !== 'production';
@@ -18,6 +20,7 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
+                exclude: /(node_modules)/,
                 use: {
                     loader: 'babel-loader',
                 },
@@ -50,12 +53,22 @@ module.exports = {
         ],
     },
     plugins: [
+        (!inDev ? new UglifyJsPlugin({
+            parallel: true,
+            cache: true,
+        }) : false),
+        (!inDev ? new BundleAnalyzerPlugin() : false),
         new HtmlWebpackPlugin({
             title: 'Webpack Bolierplate',
         }),
-    ],
+        new BundleAnalyzerPlugin({
+            openAnalyzer: false,
+            analyzerMode: 'static',
+
+        }),
+    ].filter(Boolean),
     optimization: {
-        minimize: true,
+        // minimize: false,
         runtimeChunk: {
             name: 'vendor',
         },

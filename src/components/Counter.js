@@ -1,13 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import PropTypes from 'proptypes';
-import { counterDecrement, counterIncrement } from '../store/actions/user';
+import { counterDecrement, counterIncrement } from '../redux/actions/user';
 
-const Counter = ({ counter, increment, decrement }) => (
+const Counter = ({ counter, increment, decrement, children }) => (
     <div className="counter">
+        <Link to="hello">Hello</Link>
         <button onClick={() => increment()}>+</button>
         <span>{counter}</span>
         <button onClick={() => decrement()}>-</button>
+        {children}
     </div>
 );
 

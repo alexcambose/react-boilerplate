@@ -2,7 +2,8 @@
   "presets": [
     "env",
     "react",
-    "stage-0"
+    "stage-0",
+    "es2017"
   ],
   "plugins": [
     "transform-class-properties",

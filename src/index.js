@@ -3,7 +3,7 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import App from './App';
 import './assets/styles/index.scss';
-import store from './store/index';
+import store from './redux/index';
 
 const div = document.createElement('div');
 div.id = 'app';
