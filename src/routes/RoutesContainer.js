@@ -12,7 +12,7 @@ const renderRoutes = (routes, previousPath = '/') => routes.map(route => ( // lo
         sensitive={route.sensitive}
         path={normalize(`${previousPath}/${route.path}`)}
         render={props => (
-            <route.component {...props} >
+            <route.component {...props}>
                 {route.routes && <Fragment>{renderRoutes(route.routes, normalize(`${previousPath}/${route.path}`))}</Fragment>}
             </route.component>
         )}

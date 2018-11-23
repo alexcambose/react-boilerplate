@@ -5,11 +5,11 @@ import thunk from 'redux-thunk';
 import history from './history';
 import reducers from './reducers/index';
 
-/* eslint-disable no-underscore-dangle */
+/* eslint-disable no-underscore-dangle, no-undef */
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 
 export default createStore(
-    reducers,
-    composeEnhancers(applyMiddleware(thunk, logger, routerMiddleware(history))),
+  reducers,
+  composeEnhancers(applyMiddleware(thunk, logger, routerMiddleware(history))),
 );
 /* eslint-enable */

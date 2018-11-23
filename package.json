@@ -1,5 +1,5 @@
 {
-  "name": "it-marathon",
+  "name": "react-boilerplate",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -8,7 +8,7 @@
     "build:prod": "NODE_ENV=production webpack",
     "watch": "webpack --watch",
     "serve": "webpack-dev-server --open --history-api-fallback --hot --mode development",
-    "eslint": "eslint",
+    "lint": "eslint",
     "analize": "run-s build && opn dist/report.html",
     "analize:prod": "run-s build:prod && opn dist/report.html"
   },
