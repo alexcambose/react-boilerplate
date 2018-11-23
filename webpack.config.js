@@ -61,16 +61,21 @@ module.exports = {
       ? new UglifyJsPlugin({
         parallel: true,
         cache: true,
+        uglifyOptions: {
+          mangle: true,
+          ie8: false,
+        },
       })
       : false,
-    !inDev ? new BundleAnalyzerPlugin() : false,
     new HtmlWebpackPlugin({
       title: 'Webpack Bolierplate',
     }),
-    new BundleAnalyzerPlugin({
-      openAnalyzer: false,
-      analyzerMode: 'static',
-    }),
+    !inDev
+      ? new BundleAnalyzerPlugin({
+        openAnalyzer: false,
+        analyzerMode: 'static',
+      })
+      : false,
   ].filter(Boolean),
   optimization: {
     // minimize: false,
